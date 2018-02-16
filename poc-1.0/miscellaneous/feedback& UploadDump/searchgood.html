@@ -1,0 +1,23 @@
+<</table><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+    <style>
+      body {background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);} 
+      h1 {color: black;}    
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+<body>
+<h1>The Search Page...</h1>
+      <form action="searchImage" method="post" enctype="multipart/form-data" >
+        <table border=“2” align=“center” width=“50%”>  
+<p class="search">
+    <label>Enter Image-ID:</label>
+    <input name="search" type="text" class="txt" />
+    <input name="search-btn" type="submit" class="btn" value="SEARCH" />
+</p>
+  <img src="getImage.jsp?id=<%=id%>" width="400px"/>
+ </form>
+    </body>
+</html>

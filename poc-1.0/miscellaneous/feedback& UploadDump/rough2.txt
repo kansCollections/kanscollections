@@ -1,0 +1,30 @@
+public String handleFileUpload(@RequestParam("file") MultipartFile file, Model model) {
+		try {
+			storageService.store(file);
+			model.addAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");
+			files.add(file.getOriginalFilename());
+		} catch (Exception e) {
+			model.addAttribute("message", "FAIL to upload " + file.getOriginalFilename() + "!");
+		}
+		return "uploadForm";
+	}
+
+//-----
+
+@RequestMapping("/uploadImage")
+	public String uploadImage (@RequestParam("image") MultipartFile image, @RequestParam ("imageName") String imageName) 
+	{
+		
+         //System.out.print("inside indexcontroll");
+		
+		 DBConnection DBcon = new DBConnection(); 
+		if (DBcon.insert(image, imageName))
+		 {
+			System.out.print("User is validated -- GOOD");
+			return "Home.jsp";
+		 }
+		 
+		 System.out.print("User is invalidated --XXX ");
+		 return "Home.jsp";
+	}
+

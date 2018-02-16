@@ -1,0 +1,50 @@
+ // The "insertImage" method is used to insert input values of the fields in Upload page 
+ //into the respective columns in the database table:imagetable
+//@WebServlet("/insertImage")
+@MUiltipartConfig (maxFileSize = 16177216) //upto to 16mb	
+public class insertImage extends HttpServlet(MultipartFile image, String imageName)
+	{
+              // This sql query is used to insert image and imageName into the imagetable
+		sql ="insert into imagetable values (?,?);";
+		
+		//System.out.println(" in DBconnection email ="+email );
+	protected void doPost((HttpServletRequest request,
+        HttpServletResponse response)
+        throws ServletException, IOException {
+    response.setContentType("text/html;charset=UTF-8");	
+           try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Properties properties = new Properties();
+			properties.setProperty("user", "root");
+			properties.setProperty("password", "11420");
+			
+			properties.setProperty("useSSL", "false"); // for software (mysql) certificate
+			properties.setProperty("autoReconnect", "true");
+                        Connection con = null;
+                        Connection con = DriverManager.getConnection(url,properties);
+			PreparedStatement st = con.prepareStatement(sql);
+                        out = response.getWriter();
+                        int result = 0;
+                        Part part = request.getPart("image");
+                        String imageName = request.getParameter("imageName");
+                        InputStream img = part.getInputStream();
+			st.setBlob(1, img);
+			st.setString(2,imageName);
+			//System.out.println(sql);
+			result = st.executeUpdate();
+		    if(result > 0)
+                        {
+                          out.println("<h1> image inserted successfully </h1>");
+                        }
+
+                      }
+		    
+                    catch (Exception e)
+		         {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			       // out.println(e);
+                         }
+	     return true;
+	    }
+	

@@ -1,0 +1,37 @@
+</table><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+    <style>
+      body {background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);} 
+      h1 {color: black;}   
+      p {color: white;} 
+      table, th, td {border: 1px solid black;}
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+    <body>
+      <h1>The Upload Page...</h1>
+      <form action="uploadImage" method="post" enctype="multipart/form-data" >
+        <table border=“2” align=“center” width=“50%”>  
+          <tr> 
+             <th align=”center” bgcolor=”SlateBlue” style=”color:white” colspan= "2">
+               <h2>Image Upload</h2>
+             </th>
+          </tr>
+          <tr> 
+             <th align="right">Select Image:</th>
+             <td><input type="file" name="image"/></td>
+          </tr>
+          <tr> 
+             <th align="right">Select Name:</th>
+             <td><input type="text" name="imageName"/></td>
+           </tr>
+           <tr> 
+           <td><input type="submit" value="Submit" style="margin:0;"></input></td>
+            <td><input type="reset" value="Reset" style="margin:0;"></input></td>
+           </tr>
+          </table>
+        </form>
+      </body>
+ </html>  
