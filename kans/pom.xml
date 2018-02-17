@@ -71,6 +71,6 @@
 </dependencies>
   
   <build>
-    <finalName>kans</finalName>
+    <finalName>ROOT</finalName>
   </build>
 </project>
