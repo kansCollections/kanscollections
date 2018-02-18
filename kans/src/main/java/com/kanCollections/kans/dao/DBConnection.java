@@ -15,6 +15,8 @@ public class DBConnection
 {
 	String sql ="select * from user where name=? and password=? ;";
 	String url ="jdbc:mysql://localhost:3306/kancollections";
+	//String url ="jdbc:mysql://35.229.111.207:3306/kancollections";
+	
 	//String uname ="root";
 	//String password ="11420";
  
