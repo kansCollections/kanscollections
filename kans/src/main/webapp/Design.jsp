@@ -75,7 +75,8 @@
 
              
              String sql ="select imageID,imageName from imagetable order by	1 ;";
-         	String url ="jdbc:mysql://localhost:3306/kancollections";
+         	//String url ="jdbc:mysql://localhost:3306/kancollections";
+         	String url ="jdbc:mysql://35.229.69.146:3306/kancollections";
              try {
      			Class.forName("com.mysql.jdbc.Driver"); // to load and register for driver class
      			Properties properties = new Properties();
@@ -95,6 +96,7 @@
 				out.print("<option value=\"" +rs.getInt(1)+ "\">" + rs.getString(2) +"</option>");				
 
      			}
+     			con.close();
     		} catch (Exception e) {
     			e.printStackTrace();}
              

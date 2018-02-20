@@ -9,10 +9,11 @@
   <url>http://maven.apache.org</url>
   <dependencies>
     
+    <!-- Test Dependencies -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     
@@ -30,19 +31,36 @@
     <version>5.2.12.Final</version>
 </dependency>
 
+<!--Spring ORM  object relational model-->
 <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-orm</artifactId>
-    <version>4.3.13.RELEASE</version>
+    <version>4.3.14.RELEASE</version>
 </dependency>
 
+<!--Mysql Connector -->
 <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<!--  
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
     <version>6.0.6</version>
 </dependency>
+-->
+<!-- http://dev.mysql.com/doc/connector-j/en/ -->
+<dependency>                        
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <version>6.0.5</version>
+</dependency>
+
+<dependency>
+  <groupId>com.google.cloud.sql</groupId>
+  <artifactId>mysql-socket-factory-connector-j-6</artifactId>
+  <version>1.0.5</version>
+</dependency>
+
 
 <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
 <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
@@ -53,11 +71,13 @@
 </dependency>
 
 
+
+<!--c3p0 Jdbc connection pooling -->
 <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
 <dependency>
     <groupId>com.mchange</groupId>
     <artifactId>c3p0</artifactId>
-    <version>0.9.5.2</version>
+    <version>0.9.5.1</version>
 </dependency>
 
 
@@ -65,8 +85,9 @@
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-tx</artifactId>
-    <version>4.3.13.RELEASE</version>
+    <version>4.3.14.RELEASE</version>
 </dependency>
+
 
 <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 <dependency>
@@ -75,7 +96,18 @@
     <version>3.1.0</version>
     <scope>provided</scope>
 </dependency>
-
+ 
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
 
 
 </dependencies>

@@ -14,8 +14,10 @@ import java.util.Properties;
 public class DBConnection 
 {
 	String sql ="select * from user where name=? and password=? ;";
-	String url ="jdbc:mysql://localhost:3306/kancollections";
-	//String url ="jdbc:mysql://35.229.111.207:3306/kancollections";
+	//String url ="jdbc:mysql://localhost:3306/kancollections";
+	String url ="jdbc:mysql://35.229.69.146:3306/kancollections";
+
+	
 	
 	//String uname ="root";
 	//String password ="11420";
@@ -34,6 +36,8 @@ public class DBConnection
 			properties.setProperty("useSSL", "false"); // for software (mysql) certificate
 			properties.setProperty("autoReconnect", "true");
 			
+			//Connection con = DriverManager.getConnection(url, "root", "11420");
+			
 			Connection con = DriverManager.getConnection(url,properties);
 			PreparedStatement st = con.prepareStatement(sql);
 			//st.setString(1, "'" + uname +"'");
@@ -42,13 +46,16 @@ public class DBConnection
 			st.setString(2,pass);
 
 			ResultSet rs =st.executeQuery();
+			
 			if  (rs.next()) {
+				con.close();
 				return true;
 			}
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-	
+		
 		 return false;
 	}
 	
@@ -77,6 +84,7 @@ public class DBConnection
 			st.setString(6,rating); // note: the input from the user, always comes as "string" type and not "int" but it is stored as "int" after it reaches the database as the column "rating" is defined by int values
 			System.out.println(sql);
 			st.executeUpdate();
+	
 		
 		}
 			catch (Exception e)
@@ -115,6 +123,7 @@ public boolean insertImage (String filePath, String fileDescription)
 		st.setString(2, fileDescription);
 		st.executeUpdate();
 		st.close();
+
 	}
 		catch (Exception e)
 			{
@@ -128,7 +137,7 @@ public boolean insertImage (String filePath, String fileDescription)
 public boolean insertDesign (String DesPath, String DesDescription,String imgid)
 {
 	//This sql query is used to insert Design and DesignName into the CollectionsTable
-	sql ="insert into CollectionsTable (DesignImage, DesignName,imgID) values (?,?,?);";				
+	sql ="insert into collectionstable (DesignImage, DesignName,imgID) values (?,?,?);";				
 	//System.out.println(" in DBconnection imageName ="+imageName );
 	try {
 		//Database connection and SQL query related
@@ -153,6 +162,7 @@ public boolean insertDesign (String DesPath, String DesDescription,String imgid)
 		st.setString(3, imgid);
 		st.executeUpdate();
 		st.close();
+		
 	}
 		catch (Exception e)
 			{

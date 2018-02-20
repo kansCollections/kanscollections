@@ -19,20 +19,20 @@ public class IndexController
 	@RequestMapping("/")
 	public String home() 
 	{
-		return "index.jsp";
+		return "index";
 	}
 	
 	@RequestMapping("main")
 	public String main() 
 	{
-		return "Home.jsp";
+		return "Home";
 		
 	}
 	
 	@RequestMapping("Login")
 	public String signin()
 	{
-		return "Login.jsp";
+		return "Login";
 	}
 	
 	@RequestMapping("/validate_usr")
@@ -51,10 +51,10 @@ public class IndexController
 		 if (DBcon.check(name, pwd))
 		 {
 			System.out.print("User is validated -- GOOD");
-			return "Home.jsp";
+			return "Home";
 		 }
 		 
-		 System.out.print("User is invalidated --XXX ");
+		 System.out.print("User is invalidated --******check the user *******");
 		 return null;
 		
 }
@@ -78,18 +78,18 @@ public class IndexController
 		if (DBcon.insert(realname, email,product,service,comments,rating))
 		 {
 			System.out.print("User is validated -- GOOD");
-			return "Home.jsp";
+			return "Home";
 		 }
 		 
-		 System.out.print("User is invalidated --XXX ");
-		 return "Home.jsp";
+		 System.out.print("User is invalid --check the user ");
+		 return "Home";
 	}
 	
 	
-	@RequestMapping("/uploadfile")
+	@RequestMapping("uploadfile")
 	public String ImageUpload (@RequestParam("image") String path, @RequestParam ("imageName") String desc) 
 	{
-		
+		//ImageUpload
          System.out.print("inside indexcontroller");
          System.out.print("inside indexcontroller Path=" + path);
 		 DBConnection DBcon = new DBConnection(); 
@@ -97,11 +97,11 @@ public class IndexController
 		if (DBcon.insertImage(path, desc))
 		 {
 			System.out.print("Image uploaded successfully");
-			return "Home.jsp";
+			return "Home";
 		 }
 		 
 		System.out.print("Image is not uploaded ");
-		 return "Home.jsp";
+		 return "Home";
 	}
 	
 
@@ -120,11 +120,11 @@ public String DesignUpload (@RequestParam("file") String DesignPath, @RequestPar
 	if (DBcon.insertDesign(DesignPath, Ddescription,imgid))
 	 {
 		System.out.print("Image uploaded successfully");
-		return "Home.jsp";
+		return "Home";
 	 }
 	 
 	System.out.print("Image is not uploaded ");
-	 return "Home.jsp";
+	 return "Home";
 }
 
 @RequestMapping("/pick")
@@ -141,16 +141,16 @@ public String DesignSearch(@RequestParam("pickbtn") String pickid, @RequestParam
  
 	if (pickid.equals("SEARCH") ) 
 	{ 
-		return "Search.jsp"; 
+		return "Search"; 
 	
 	}else
 	{
 	
 	if (pickid.equals("DELETE"))
-	{ return "underconstruction.jsp"; 
+	{ return "underconstruction"; 
 	}
 	else {
-	return "Home.jsp"; 
+	return "Home"; 
 	}
 	
 	}}

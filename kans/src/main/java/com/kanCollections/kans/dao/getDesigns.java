@@ -14,7 +14,8 @@ public class getDesigns {
 //To get the result set of the SQL query
 	 public ResultSet getResultSet(int ID ) {
 	     String sql ="select  DesignImage from collectionstable where collectionID =?;";
-	     String url ="jdbc:mysql://localhost:3306/kancollections";
+	     //String url ="jdbc:mysql://localhost:3306/kancollections";
+	     String url ="jdbc:mysql://35.229.69.146:3306/kancollections";
 	     try {
 	     Class.forName("com.mysql.jdbc.Driver");
 			Properties properties = new Properties();
@@ -42,7 +43,8 @@ public class getDesigns {
 	 public ResultSet getName(int ID )
 	 {
 	     String sql ="select collectionID,DesignName from collectionstable where imgID =?;";
-	     String url ="jdbc:mysql://localhost:3306/kancollections";
+	     //String url ="jdbc:mysql://localhost:3306/kancollections";
+	     String url ="jdbc:mysql://35.229.69.146:3306/kancollections";
 	     try {
 	     Class.forName("com.mysql.jdbc.Driver");
 			Properties properties = new Properties();
@@ -69,7 +71,8 @@ public class getDesigns {
 
 	 public Integer getRowCount(int ID) {
 	     String sql ="select count(collectionID) from collectionstable where imgID =?;";
-	     String url ="jdbc:mysql://localhost:3306/kancollections";
+	     //String url ="jdbc:mysql://localhost:3306/kancollections";
+	     String url ="jdbc:mysql://35.229.69.146:3306/kancollections";
 	     try {
 	     Class.forName("com.mysql.jdbc.Driver");
 			Properties properties = new Properties();

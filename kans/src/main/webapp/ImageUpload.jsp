@@ -60,7 +60,7 @@
  </div>    
 <div class="body" align="center" style="background-color:#F2FFFF; height: 1000px">
 <br> <br>
-      <form action="uploadfile" method="post" enctype="multipart/form-data" >
+      <form action="uploadfile" method="get" enctype="multipart/form-data" >
       <br> 
       <h3>A fun way  of adding your idea to the theme.</h3>
        <p> What kind of a theme is your choice ? </p>
