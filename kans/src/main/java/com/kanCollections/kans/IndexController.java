@@ -86,7 +86,7 @@ public class IndexController
 	}
 	
 	
-	@RequestMapping("uploadfile")
+	@RequestMapping("/uploadfile")
 	public String ImageUpload (@RequestParam("image") String path, @RequestParam ("imageName") String desc) 
 	{
 		//ImageUpload
