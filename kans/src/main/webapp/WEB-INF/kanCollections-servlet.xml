@@ -12,8 +12,7 @@
 
 <context:component-scan base-package="com.kanCollections.kans"></context:component-scan>
 
-<bean
-                class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
                 <property name="prefix">
                                <value>/</value>
                 </property>
@@ -47,8 +46,16 @@
 </bean>
 <tx:annotation-driven transaction-manager="myTransactionManager"/>
 -->
-<!--Helps in displaying the static images that you have in the homepage -->
+ <!--Helps in displaying the static images that you have in the homepage and other webpages -->
+ 
+
+<mvc:annotation-driven /> 
 <mvc:resources mapping="/resources/**" location="/resources/,/resources/images/" />
-<mvc:annotation-driven />
+<mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/> 
+<!--Helps in accessing the JavaScript in the JS folder -->
+<mvc:resources mapping="/resources/**" location="/resources/,/resources/JS/" />
+<!--Helps in accessing the CSS Files in the CSS folder -->
+<mvc:resources mapping="/resources/**" location="/resources/,/resources/CSS/" />
+<mvc:default-servlet-handler />   
 
 </beans>

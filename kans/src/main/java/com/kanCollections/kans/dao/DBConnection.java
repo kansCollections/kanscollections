@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Properties;
 
 
@@ -171,7 +172,44 @@ public boolean insertDesign (String DesPath, String DesDescription,String imgid)
 		   }
          return true;
  }
+ 
+public boolean DeleteTheme (String imgid)
+{
+	System.out.println( "imageId is:" + imgid);			
+	
+	//This sql query is used to Delete row from the imagetable 
+	 String sql ="DELETE FROM imagetable WHERE imageID= ?;";
+	 
+	try {
+		//Get Database connection 
+		Class.forName("com.mysql.jdbc.Driver"); 
+		Properties properties = new Properties();
+		properties.setProperty("user", "root");
+		properties.setProperty("password", "11420");
+		properties.setProperty("useSSL", "false"); // for software (mysql) certificate
+		properties.setProperty("autoReconnect", "true");
+		
+		Connection con = DriverManager.getConnection(url, properties);
+		// create a statement
+		PreparedStatement st= con.prepareStatement(sql);
+		st.setString(1,imgid);
+		//Execute SQL query
+		int rowsAffected = st.executeUpdate();
+		System.out.println("The sql query ="+ sql);
+		System.out.println(" rows affected/deleted  = "+ rowsAffected );
+		System.out.println(" Delete Complete " );
+		st.close();
+		
+	}
+		catch (Exception e)
+			{
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		   }
+         return true;
  }
+
+}
 	
 	
 	

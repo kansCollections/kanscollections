@@ -4,18 +4,20 @@
 
 
 <web-app>
-
-  <display-name>Archetype Created Web Application</display-name>
+<display-name>Archetype Created Web Application</display-name>
+  
   <servlet>
   <servlet-name>kanCollections</servlet-name>
   <servlet-class> org.springframework.web.servlet.DispatcherServlet </servlet-class>
   </servlet>
+  
   <servlet>
   	<servlet-name>GetPicture</servlet-name>
   	<display-name>GetPicture</display-name>
   	<description></description>
   	<servlet-class>com.kanCollections.kans.dao.GetPicture</servlet-class>
   </servlet>
+  
   <servlet>
   	<servlet-name>GetSearchPic</servlet-name>
   	<display-name>GetSearchPic</display-name>
@@ -26,13 +28,16 @@
   <servlet-mapping><servlet-name>kanCollections</servlet-name>
   <url-pattern>/</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
   	<servlet-name>GetPicture</servlet-name>
   	<url-pattern>/GetPicture</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
   	<servlet-name>GetSearchPic</servlet-name>
   	<url-pattern>/GetSearchPic</url-pattern>
   </servlet-mapping>
   
+
 </web-app>

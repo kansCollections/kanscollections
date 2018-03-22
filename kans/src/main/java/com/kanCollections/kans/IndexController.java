@@ -3,8 +3,14 @@ package com.kanCollections.kans;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.Locale;
+import java.util.logging.*;
+
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kanCollections.kans.dao.DBConnection;
@@ -16,24 +22,20 @@ public class IndexController
 	//FeedbackDao fdao;
 	//Feedback feedback;
 	
+	    
 	@RequestMapping("/")
 	public String home() 
 	{
 		return "index";
 	}
 	
-	@RequestMapping("main")
-	public String main() 
-	{
-		return "Home";
-		
-	}
 	
-	@RequestMapping("Login")
+	/*@RequestMapping("Login")
 	public String signin()
 	{
 		return "Login";
 	}
+	*/
 	
 	@RequestMapping("/validate_usr")
     public String validate_usr(@RequestParam("name") String name, @RequestParam("password") String pwd )
@@ -50,12 +52,14 @@ public class IndexController
 		 DBConnection DBcon = new DBConnection(); 
 		 if (DBcon.check(name, pwd))
 		 {
-			System.out.print("User is validated -- GOOD");
+			System.out.println("User is validated -- GOOD");
 			return "Home";
 		 }
 		 
-		 System.out.print("User is invalidated --******check the user *******");
-		 return null;
+		 System.out.println("User is invalidated --******check the user *******");
+		// for future feature: think of error pop using JS and then go the the same lo 
+		 //return null;
+		 return "Login";
 		
 }
 	
@@ -81,8 +85,8 @@ public class IndexController
 			return "Home";
 		 }
 		 
-		 System.out.print("User is invalid --check the user ");
-		 return "Home";
+		System.out.print("User is invalid --check the user ");
+		 return "Error";
 	}
 	
 	
@@ -101,7 +105,7 @@ public class IndexController
 		 }
 		 
 		System.out.print("Image is not uploaded ");
-		 return "Home";
+		 return "Error";
 	}
 	
 
@@ -124,7 +128,7 @@ public String DesignUpload (@RequestParam("file") String DesignPath, @RequestPar
 	 }
 	 
 	System.out.print("Image is not uploaded ");
-	 return "Home";
+	 return "Error";
 }
 
 @RequestMapping("/pick")
@@ -136,9 +140,10 @@ public String DesignSearch(@RequestParam("pickbtn") String pickid, @RequestParam
 	//response.addCookie(prdid);
 	
 	request.getSession().setAttribute("id", radioid);
+	
  //System.out.println("In IDX1 "+request.getCookies());
  //System.out.println("In IDX2 "+  prdid.getValue());
- 
+ // special syntax used for string comaparison -> variable.equals
 	if (pickid.equals("SEARCH") ) 
 	{ 
 		return "Search"; 
@@ -147,14 +152,45 @@ public String DesignSearch(@RequestParam("pickbtn") String pickid, @RequestParam
 	{
 	
 	if (pickid.equals("DELETE"))
-	{ return "underconstruction"; 
+		
+	{
+		DBConnection DBcon = new DBConnection(); 
+		System.out.println("radioid:" + radioid);
+		DBcon.DeleteTheme(radioid);
+		System.out.println("deleted sucessfully");
+		return "Display"; 
 	}
 	else {
 	return "Home"; 
 	}
 	
 	}}
+
+ // to use the  gohome option
+@RequestMapping("main")
+public String main() 
+{
+	return "Home";
 	
+}
+
+@RequestMapping("/MusicStatic")
+public String MusicStatic() 
+{
+	return "Musical.jsp";
+}
+
+/*private static final org.jboss.logging.Logger logger = LoggerFactory.logger(IndexController.class);
+
+/**
+ * Simply selects the home view to render by returning its name.
+ */
+/*@RequestMapping(value = "/", method = RequestMethod.GET)
+public String Musical(Locale locale, Model model) {
+    logger.infof("Welcome home! The client locale is {}.", locale);
+    return "Musical";
+}
+*/
 	
 }
 

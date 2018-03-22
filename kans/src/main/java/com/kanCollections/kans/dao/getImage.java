@@ -66,8 +66,10 @@ public class getImage {
 	    		 
 	 }
 
-	 public Integer get() {
-	     String sql ="select count(imageID) from imagetable ;";
+	 //public Integer get() {
+		 public ResultSet get() {
+	     //String sql ="select count(imageID) from imagetable ;";
+	     String sql ="select imageID from imagetable ;";
 	     //String url ="jdbc:mysql://localhost:3306/kancollections";
 	     String url ="jdbc:mysql://35.229.69.146:3306/kancollections";
 	     try {
@@ -82,7 +84,8 @@ public class getImage {
 			//st.setInt(1,ID);
 			ResultSet rs =st.executeQuery();
 			if  (rs.next())	{
-				return rs.getInt(1);
+				//return rs.getInt(1);
+				return rs;
 			}
 						
 		   	 
@@ -90,7 +93,8 @@ public class getImage {
 	    	 e.printStackTrace();
 	     }
 	     
-	     return 0;
+	    // return 0;
+	     return null;
 	    		 
 	 }
 

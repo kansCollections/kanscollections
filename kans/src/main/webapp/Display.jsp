@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>untitled</title>
+<title>Display</title>
     <style>
    
 .header {
@@ -79,16 +79,23 @@ table, th, td {
   
    
 <%@ page import="com.kanCollections.kans.dao.getImage" %>
-<%
+<%@ page import="java.sql.ResultSet" %>
+<% 
+ // To build the radioselection values dynamically using the resultset from the database
 	getImage imgtest = new getImage();
+    ResultSet listofrowids;
+    listofrowids=imgtest.get();
 //out.print("<form action=\" Search \" method=\"post \">");
-	for (int i=1 ; i<= imgtest.get(); i++  ){
+	//for (int i=1 ; i<= imgtest.get(); i++  ){
+		int i;
+	do {
+		i=listofrowids.getInt(1);
 		//out.print("<tr> <td align='center'>"+  i + "</td><td align='center'><img src=\"image?id="+i+"\" width=\"117\" height=\"150\"</td></tr>" );
 		out.print("<tr> <td align='center'>" + " <input type=\"radio\" name=\"Radioselection\"  value=\""+ i+"\"> " +imgtest.getName(i) +  "</td><td align='center'><img src=\"GetPicture?id="+i+"\" width=\"117\" height=\"150\"</td>" );
 		//out.print("<td> </td> <td> </td></tr>"  );
 	out.print("<td> <textarea rows=\"10\" cols=\"40\" name=\"comment\" name=\"comment" +i + "\" >Enter Comments here... </textarea></td> <td> </td></tr>"  );
 		
-	}
+	}while(listofrowids.next());
 //	out.print("</form>");
 %>
 
@@ -97,10 +104,10 @@ table, th, td {
       </table>
       
       </form>
-     
+     <!--    creating a cookie object and assigning the radioselection value to the cookie object -->
               <% 
              Cookie prdName = new Cookie("Radioselection", request.getParameter("Radioselection"));
-             response.addCookie(prdName);
+             response.addCookie(prdName); //adding cookie in the response 
              %>
      </div>
       </body>

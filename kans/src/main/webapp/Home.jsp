@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style type="text/css">
@@ -8,7 +9,7 @@
     
     padding: 5px;
     height:200px;
-    background-image: url(ProductPrmo/../resources/images/SariForBackground.jpg);
+    background-image: url(kans/../resources/images/SariForBackground.jpg);
     <!--background-position: right bottom, left top;-->
     float: right;
    }
@@ -111,7 +112,8 @@
 }
  
  .column1 img {
-  border-radius: 45%;
+  border-radius: 10%;
+  padding: 10px;
  }
  
  .column1 h1
@@ -120,17 +122,45 @@
  text-align: justify;
 }
 
-.column1 p {
-color:DarkMagenta; 
+.column1 p 
+{
+color: #E4005D; 
 font-size:20px;
-font-family:Apple Chancery, cursive;
+font-family:Apple Chancery, bold, cursive;
 }
 
-.column2 {
+.column1 .MusicContainer button 
+ {
+        
+        color: white;
+        width: 200px;
+        height: 230px;
+        border: 0px;
+       padding: 0px 0px 10px 65px;
+        cursor: pointer;
+        
+        box-shadow: 2px 2px 5px hsla(0,0%,0%,.7);
+        border-radius: 5px;
+        background: -webkit-linear-gradient(left, #cdb060 0%,#a5862e 100%); /* Chrome10+,Safari5.1+ */
+  }
+
+  .column1 .MusicContainer img 
+   {
+        display: block;
+        left: 0;
+        position: absolute;
+        top: -2%;
+        z-index: 1;
+    }
+ 
+    
+.column2 
+{
     float: left;
     padding: 10px;
     height: 1000px; /* Should be removed. Only for demonstration */
-    width: 46%;
+    width: 45%;
+    float: Center;
 }
 
 .column2 h1
@@ -141,8 +171,7 @@ font-family:Apple Chancery, cursive;
     font-size:  35px;
     text-align: center;
     float: Center;
-    
-}
+ }
 
 .column2 h2
 { 
@@ -160,9 +189,10 @@ font-family:Apple Chancery, cursive;
     height: 1000px; /* Should be removed. Only for demonstration */
     width: 25%;
 }
+
  .column3 img {
   border-radius: 10%;
-  
+  padding: 10px;
  }
 
 .column3 h1
@@ -171,11 +201,33 @@ font-family:Apple Chancery, cursive;
  text-align: justify;
 }
 .column3 p {
-color:DarkMagenta; 
+color: #E4005D; 
 font-size:20px;
-font-family:Apple Chancery, cursive;
+font-family:Apple Chancery,bold, cursive;
 }
 
+
+.column3 .MagicContainer button 
+ {       
+        float: left;
+        color: white;
+        width: 200px;
+        height: 230px;
+        border: 0px;
+       cursor: pointer;
+        box-shadow: 2px 2px 5px hsla(0,0%,0%,.7);
+        border-radius: 5px;
+        background: -webkit-linear-gradient(left, #cdb060 0%,#a5862e 100%); /* Chrome10+,Safari5.1+ */
+  }
+
+  .column3 .MagicContainer img 
+   {
+        display: block;
+        left: 0;
+        position: absolute;
+        top: -2%;
+        z-index: 1;
+    }
 
 /* Clear floats after the columns */
 .row:after {
@@ -185,6 +237,10 @@ font-family:Apple Chancery, cursive;
 }
  
 </style>
+
+<!-- Program for adding music to the website using JS -->
+
+ <!--  <script src="<c:url value="kans/../resources/JS/Music.js" />"></script> -->
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -197,7 +253,6 @@ font-family:Apple Chancery, cursive;
  <br><br><br>
   </div>
   
-  <div class="topnav">
  <div class="topnav">
 <ul>
   <li><a href="Home.jsp">Home </a></li>
@@ -219,28 +274,37 @@ font-family:Apple Chancery, cursive;
  </ul>
  </div>
  
-
-  
   <div class="row">
   <div class="column1" style="background-color:#EAFFCB;">
     <h1>Traditional Eastern...</h1>
-    <img src="ProductPrmo/../resources/images/tradinew.jpg" width="300" height="320" />
+    <img src="kans/../resources/images/TradiA.jpg" width="300" height="350" /> 
    <p>Give your personality, a touch of your tradition, check our traditional collections.</p>
+  <div class="MusicContainer">
+  <ul> <li><a href="Musical.jsp">
+  <button class="button" style="background-image:url(kans/../resources/images/musically.jpg)"></button></a></li></ul>
+</div>
   </div>
   <div class="column2" style="background-color:#EAFFCB;">
    <h1>...A Customer-centric Selection.</h1>
    <h2>Elect an ensemble that matches your MOOd!!</h2>
-
-  </div>
-  <div class="column3" style="background-color:#EAFFCB;">  
-    <h1>...Trendy Indo-Western </h1>
-    <img src="ProductPrmo/../resources/images/trendnew.jpg" width="280" height="300"  "/>
-    <br>
-    <p  >Give your creativity a chance to display, check our trendy Indo-Western collections.</p>
-    
-  </div>
 </div>
 
+  <div class="column3" style="background-color:#EAFFCB;">  
+    <h1>...Trendy Indo-Western </h1>
+    <img src="kans/../resources/images/TrendyA .jpg" width="300" height="350" />
+    <br>
+    <p  >Give your creativity a chance to display, check our trendy Indo-Western collections.</p>
+    <div class="MagicContainer">
+    <ul> <li><a href="connect.jsp">
+  <button class="button" style="background-image:url(kans/../resources/images/magically.jpg)"></button></a></li></ul>
+   </div>
+    
+  <!--  <div class="MagicContainer">
+  <img src="kans/../resources/images/magically.jpg" width="90" height="90"  />
+  <button class="btn">Connect magically!</button>
+  -->
+</div>  
+  </div>
   
 </body>
 </html>
