@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd  
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<context:component-scan base-package="com.kanCollections.kans"></context:component-scan>
+
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                <property name="prefix">
+                               <value>/</value>
+                </property>
+                <property name="suffix">
+                                <value>.jsp</value>
+                </property>
+         </bean>
+
+<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	<property name="driverClass" value="com.mysql.jdbc.Driver" /> 
+	<property name="jdbcUrl" value="jdcb:mysql://127.0.0.1:3306/kancollections" />
+	<property name="user" value="root" />
+	<property name="password" value="11420" />
+	<property name="minPoolSize" value="5" />
+	<property name="maxPoolSize" value="20" />
+	<property name="maxIdleTime" value="30000" /> 
+</bean>
+<!-- 
+<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+	<property name="dataSource" ref="myDataSource" />
+	<property name="packagesToScan" value="com.kanCollections.kans.dao" />
+	<property name="hibernateProperties" >
+		<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>						
+		</props>	
+	</property>
+</bean>
+<bean id="myTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory" />
+</bean>
+<tx:annotation-driven transaction-manager="myTransactionManager"/>
+-->
+ <!--Helps in displaying the static images that you have in the homepage and other webpages -->
+ 
+
+<mvc:annotation-driven /> 
+<mvc:resources mapping="/resources/**" location="/resources/,/resources/images/" />
+<mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/> 
+<!--Helps in accessing the JavaScript in the JS folder -->
+<mvc:resources mapping="/resources/**" location="/resources/,/resources/JS/" />
+<!--Helps in accessing the CSS Files in the CSS folder -->
+<mvc:resources mapping="/resources/**" location="/resources/,/resources/CSS/" />
+<mvc:default-servlet-handler />   
+
+</beans>
